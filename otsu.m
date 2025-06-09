@@ -3,7 +3,7 @@ function Iout = otsu(Iin)
 imageFolder = 'C:\Users\Xabier\OneDrive\Escritorio\fotos\PF\Fotos\fotos';
 
 % === ARCHIVOS DE IMAGEN ===
-imageFiles = [dir(fullfile(imageFolder, '*.jpg')); dir(fullfile(imageFolder, '*.tiff'))];
+imageFiles = [dir(fullfile(imageFolder, '*.jpg')); dir(fullfile(imageFolder, '*.tiff')); dir(fullfile(imageFolder, '*.png'))];
 TPs = [];
 FPs = [];
 Precisions = [];
@@ -540,4 +540,6 @@ function [TP_rate, FP_rate, FNR, precision, recall, ...
     Precisionmean = precision * 100;
     Recallmean = recall * 100;
 end
+
 Iout= I_Gauss;
+end
