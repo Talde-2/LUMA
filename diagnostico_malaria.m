@@ -150,48 +150,34 @@ else
 end
 
 Tabla_Global = [Tabla_Global; nueva_fila];
-% 
+
+
 % 2. DIAGNÓSTICO CON MODELOS PREENTRENADOS
-
-% Asegurar que la tabla global esté definida en el app
-% if ~isfield(app, 'Tabla_Global') || isempty(app.Tabla_Global)
-%     app.Tabla_Global = table(); % Crear tabla vacía si no existe
-% end
-
 
 % Cargar modelos solo una vez (fuera de este bloque si es posible)
 modelo_PBL_bin = load('model_LogisticRegression.mat');
 modelo_PBL_bin = modelo_PBL_bin.model_LogisticRegression;
 
+%modelo_PBL = load('model_RandomForest100.mat','model_RandomForest100');
 modelo_PBL = load('model_RandomForest100.mat');
 modelo_PBL = modelo_PBL.model_RandomForest100;
+disp(class(modelo_PBL));
 
-if isempty(modelo_PBL_bin)
-    tmp1 = load('model_LogisticRegression.mat');
-    modelo_PBL_bin = tmp1.model_LogisticRegression;
-end
-if isempty(modelo_PBL)
-    tmp2 = load('model_RandomForest100.mat');
-    modelo_PBL = tmp2.model_RandomForest100;
-end
+modelo_PBL = modelo_PBL.Trained{1};
 
-
-% Extraer características relevantes para los modelos
+% Modelo binario
 x_nueva_bin = table2array(nueva_fila(:, {'Leu_median_Intensity','GlobulosBlancosDetectados','Leu_median_Circularity','Par_median_Intensity'}));
 [predictions_bin, scores_bin] = predict(modelo_PBL_bin, x_nueva_bin);
 
-% x_nueva = table2array(nueva_fila(:, {'GlobulosBlancosDetectados','Leu_median_Circularity','Par_median_Intensity'}));
-% [predictions, scores] = predict(modelo_PBL.Trained{1}, x_nueva); 
+% Random Forest
+x_nueva = table2array(nueva_fila(:, {'GlobulosBlancosDetectados','Leu_median_Circularity','Par_median_Intensity'}));
+[predictions, scores] = predict(modelo_PBL, x_nueva); 
 
 % Guardar predicciones en la fila
 nueva_fila.DiagnosticoBinario = string(predictions_bin);
 fprintf('Predicción binaria: %s\n', nueva_fila.DiagnosticoBinario);
 
 if predictions_bin == 'enfermo'
-    
-    x_nueva = table2array(nueva_fila(:, {'GlobulosBlancosDetectados','Leu_median_Circularity','Par_median_Intensity'}));
-    [predictions, scores] = predict(modelo_PBL.Trained{1}, x_nueva); 
-
     
     clase_final = string(predictions);
     nueva_fila.TipoMalaria = clase_final;
@@ -232,9 +218,13 @@ if predictions_bin == 'enfermo'
     fprintf('Densidad parasitaria: %.2f parásitos/µL\n', densidad_parasitaria);
     fprintf('Categoría de densidad: %s\n', categoria_densidad);
 else
+    clase_final = "sano";
+    densidad_parasitaria = "sano";
     nueva_fila.TipoMalaria = "sano";
     nueva_fila.DensidadParasitaria = 0;
     nueva_fila.CategoriaDensidad = "sano";
     fprintf('Diagnóstico final: sano\n');
 end
-end
+diagnostico = predictions_bin;
+tipo = clase_final;
+densidad=densidad_parasitaria;
