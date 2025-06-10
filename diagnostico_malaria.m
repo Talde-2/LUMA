@@ -1,4 +1,4 @@
-function [diagnostico, tipo, densidad] = diagnostico_malaria(rutaImagen)
+function [diagnostico, tipo, densidad, imagen_segmentada] = diagnostico_malaria(rutaImagen)
 %% *APLICACIÓN*
 % *1. SEGMENTACIÓN DE IMAGEN* 
 
@@ -83,7 +83,15 @@ stats_filtered_par = regionprops(mask_parasitos, 'Centroid', 'EquivDiameter');
 centros = cat(1, stats_filtered_par.Centroid);
 radios = [stats_filtered_par.EquivDiameter] / 2;
 
+imagen_segmentada = I; % imagen original
 
+for i = 1:size(centros, 1)
+    centro = centros(i, :);
+    radio = radios(i);
+    imagen_segmentada = insertShape(imagen_segmentada, ...
+        'Circle', [centro, radio], ...
+        'Color', 'red', 'LineWidth', 2);
+end
 
 % ============ 5. GUARDAR CARACTERÍSTICAS ============ %
 stats_filtered_leu = regionprops(mask_filtered, I_gris_double,'Area', 'Perimeter', 'Eccentricity', 'EquivDiameter','Solidity', 'MeanIntensity', 'BoundingBox', 'Circularity');
@@ -213,6 +221,7 @@ if predictions_bin == 'enfermo'
        end
     end
     nueva_fila.CategoriaDensidad = categoria_densidad;
+    
         
     fprintf('Tipo de malaria: %s\n', clase_final);
     fprintf('Densidad parasitaria: %.2f parásitos/µL\n', densidad_parasitaria);
@@ -228,3 +237,4 @@ end
 diagnostico = predictions_bin;
 tipo = clase_final;
 densidad=densidad_parasitaria;
+%densidad = sprintf('%.2f parásitos/µL', densidad_parasitaria);
