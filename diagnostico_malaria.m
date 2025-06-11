@@ -82,15 +82,23 @@ end
 stats_filtered_par = regionprops(mask_parasitos, 'Centroid', 'EquivDiameter');
 centros = cat(1, stats_filtered_par.Centroid);
 radios = [stats_filtered_par.EquivDiameter] / 2;
+stats_filtered = regionprops(L_filtered, 'BoundingBox');
+
+% Convertir las cajas a una matriz Nx4 requerida por insertShape
+bboxes = cat(1, stats_filtered.BoundingBox);
 
 imagen_segmentada = I; % imagen original
 
 for i = 1:size(centros, 1)
     centro = centros(i, :);
     radio = radios(i);
+    hold on;
     imagen_segmentada = insertShape(imagen_segmentada, ...
         'Circle', [centro, radio], ...
-        'Color', 'red', 'LineWidth', 2);
+        'Color', 'red', 'LineWidth', 10);
+    imagen_segmentada = insertShape(imagen_segmentada, 'rectangle', bboxes, ...
+        'Color', 'green', 'LineWidth', 10);  
+    hold off;
 end
 
 % ============ 5. GUARDAR CARACTERÍSTICAS ============ %
