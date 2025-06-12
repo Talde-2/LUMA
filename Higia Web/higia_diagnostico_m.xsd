@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="datos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="diagnosticos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="diagnostico" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="paciente">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="nombre" type="xs:string"/>
+                          <xs:element name="apellido" type="xs:string"/>
+                          <xs:element name="nacimiento" type="xs:string"/> <!-- Podría ser xs:date si usas ISO 8601 -->
+                          <xs:element name="sexo" type="xs:string"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="fecha" type="xs:string"/> <!-- Igual: mejor xs:date si es en formato AAAA-MM-DD -->
+                    <xs:element name="datosimagen">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="imagen" type="xs:string"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="resultado">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="resultadotest" type="xs:string"/>
+                          <xs:element name="especiePlasmodium" type="xs:string"/>
+                          <xs:element name="densidadParasitaria" type="xs:string"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="id" type="xs:string" use="required"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="determinaciones">
+          <xs:complexType>
+            <xs:sequence>
+
+              <xs:element name="caracteristicasMorfologicas">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="plasmodium" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="globuloRojo" type="xs:string"/>
+                          <xs:element name="trofozoitoJoven" type="xs:string"/>
+                          <xs:element name="trofozoitoMediano" type="xs:string"/>
+                          <xs:element name="trofozoitoAdulto" type="xs:string"/>
+                          <xs:element name="esquizonte" type="xs:string"/>
+                          <xs:element name="gametocito" type="xs:string"/>
+                        </xs:sequence>
+                        <xs:attribute name="tipo" type="xs:string" use="required"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+
+              <xs:element name="rangosDensidadParasitaria">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="plasmodium" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="rango" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="por100leucocitos" type="xs:string"/>
+                                <xs:element name="pormicrolitro" type="xs:string"/>
+                              </xs:sequence>
+                              <xs:attribute name="densidad" type="xs:string" use="required"/>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="tipo" type="xs:string" use="required"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
