@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- Elemento raíz -->
+  <xs:element name="diagnosticos">
+    <xs:complexType>
+      <xs:sequence>
+        <!-- Diagnóstico múltiple -->
+        <xs:element name="diagnostico" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <!-- Paciente -->
+              <xs:element name="paciente">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="nombre" type="xs:string"/>
+                    <xs:element name="edad" type="xs:positiveInteger"/>
+                    <xs:element name="sexo" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+
+              <!-- Fecha del diagnóstico -->
+              <xs:element name="fecha" type="xs:date"/>
+
+              <!-- Datos de imagen -->
+              <xs:element name="datosimagen">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ns" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+
+              <!-- Resultado -->
+              <xs:element name="resultado">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="positivoNegativo" type="xs:string"/>
+                    <xs:element name="especiePlasmodium" type="xs:string"/>
+                    <xs:element name="densidadParasitaria" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:string" use="required"/>
+          </xs:complexType>
+        </xs:element>
+
+        <!-- Determinaciones -->
+        <xs:element name="determinaciones">
+          <xs:complexType>
+            <xs:sequence>
+
+              <!-- Características morfológicas -->
+              <xs:element name="caracteristicasMorfologicas">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="especie" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="globuloRojo" type="xs:string"/>
+                          <xs:element name="faseAnillo" type="xs:string"/>
+                          <xs:element name="trofozoitoTardio" type="xs:string"/>
+                          <xs:element name="esquizonteMaduro" type="xs:string"/>
+                          <xs:element name="gametocitos" type="xs:string"/>
+                        </xs:sequence>
+                        <xs:attribute name="nombre" type="xs:string" use="required"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+
+              <!-- Rangos de densidad parasitaria -->
+              <xs:element name="rangosDensidadParasitaria">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="rango" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="pFalciparum">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="por100Leucocitos" type="xs:string"/>
+                                <xs:element name="porMicrolitro" type="xs:string"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="pVivax">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="por100Leucocitos" type="xs:string"/>
+                                <xs:element name="porMicrolitro" type="xs:string"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="nivel" type="xs:string" use="required"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
