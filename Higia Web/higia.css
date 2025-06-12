@@ -113,7 +113,6 @@ header.scrolled .logo {
     transition: color 0.3s ease;
 }
 
-/* El logo en transparente puede estar blanco */
 header .logo {
     color: white;
     transition: color 0.3s ease;
@@ -131,8 +130,6 @@ header .menu a:hover {
 header .menu a:hover {
     color: #004aad;
 }
-
-
 
 /* Hero */
 #hero {
@@ -602,35 +599,6 @@ form button:hover {
 }
 .justificado-derecha p {
   text-align: justify;
-}
-/*Instrucciones*/
-.seccion-descarga {
-  background-color: #e8f0fe; /* fondo más claro y visible */
-  padding: 100px 0; /* más espacio arriba y abajo */
-  margin-top: 60px;
-  margin-bottom: 60px;
-}
-.seccion-descarga {
-  background-color: #e6f0ff; /* fondo más claro y agradable (puedes cambiarlo) */
-  padding: 100px 20px; /* más espacio arriba y abajo, 20px a los lados */
-  margin-top: 60px;
-  margin-bottom: 60px;
-  text-align: center;
-  border-top: 2px solid #004aad; /* opcional: línea superior decorativa */
-  border-bottom: 2px solid #004aad; /* opcional: línea inferior decorativa */
-}
-
-.boton-pdf {
-  display: inline-block;
-  background-color: #004aad;
-  color: white;
-  padding: 14px 24px;
-  text-decoration: none;
-  border-radius: 10px;
-  font-weight: bold;
-  font-size: 1rem;
-  margin-top: 20px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .boton-pdf:hover {
