@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="higia_diagnostico_p.xslt"?>
+
+<datos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="higia_diagnostico_p.xsd">
+  <diagnosticos> 
+      <diagnostico id="PA0001">
+          <paciente>
+              <nombre>Naiara</nombre>
+              <apellido>Ganadera</apellido>
+              <nacimiento>02-05-1998</nacimiento>
+              <sexo>Femenino</sexo>
+          </paciente>
+          <fecha>11-06-2025</fecha>
+          <datosimagen>
+              <imagen>media/frotis1.png</imagen>
+          </datosimagen>
+          <resultado>
+              <resultadotest>sano​</resultadotest>
+              <especiePlasmodium>sano</especiePlasmodium>
+              <densidadParasitaria>-⚪​</densidadParasitaria>
+          </resultado>
+      </diagnostico>
+  </diagnosticos>
+</datos>
+
+
+
