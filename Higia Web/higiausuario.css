@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+body {
+  background-color: rgba(197, 217, 255, 1);
+  font-family: 'Lato', sans-serif;
+  color: #004aad;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #004aad;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.2rem 1rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 80px;
+  margin-right: 10px;
+}
+
+.logo h1 {
+  color: white;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+form {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  width: 90%;
+  max-width: 400px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input, select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+button {
+  background-color: #004aad;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #003080;
+}
+
+.link {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.link a {
+  color: #004aad;
+  text-decoration: underline;
+}
+
+/*Perfil*/
+header .perfil {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+header .perfil img {
+  width: 55px;
+  height: 55px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+header .perfil h1 {
+  font-size: 1.2rem;
+  color: white;
+  margin: 0;
+}
+
+/* Tablas - estilo */
+table {
+  width: 100%;
+  max-width: 1000px;
+  margin: 30px auto;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  color: #004aad;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #004aad;
+  color: white;
+  font-weight: 700;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover {
+  background-color: #e6f0ff;
+}
+
+table img {
+  max-height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+/* Estilo para los títulos */
+h1, h2 {
+  margin-left: 5%;
+  font-family: 'Lato', sans-serif;
+  color: #004aad;
+}
+
+
